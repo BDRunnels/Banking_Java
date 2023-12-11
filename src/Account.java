@@ -15,7 +15,6 @@ public abstract class Account implements IBaseRate {
         this.balance = initDeposit;
 
         // SET ACCOUNT NUMBER
-        index++;
         this.accountNumber = setAccountNumber();
 
         setRate();
@@ -23,8 +22,8 @@ public abstract class Account implements IBaseRate {
     
     // Method to set account number - called in constructor
     private String setAccountNumber() {
-        String lastTwoOfSSN = SSN.substring(SSN.length() - 2, SSN.length());
-        int uniqueID = index;
+        String lastTwoOfSSN = SSN.substring(SSN.length() - 2);
+        int uniqueID = ++index;
         int randomNumber = (int) (Math.random() * Math.pow(10, 3));
         return lastTwoOfSSN + uniqueID + randomNumber;
     }

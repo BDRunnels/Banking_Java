@@ -1,6 +1,7 @@
 import java.util.LinkedList;
 import java.util.List;
 
+
 public class BankAccountApp {
     public static void main(String[] args) {
         // Data structure to hold new accounts (Account because Savings & Checking IS-A to Account, but if they were of type Savings, Checking would not fall into that)
@@ -12,6 +13,8 @@ public class BankAccountApp {
         List<String[]> newCustomers = utilities.CSV.read(file);
 
         
+        // Iterating through newCustomers to assign variable to each field name for each customer.
+            // Then creating new Savings or new Checking based on accountType
         for ( String[] customerField : newCustomers) {
             System.out.println("-".repeat(30));
             String name = customerField[0];
@@ -30,17 +33,16 @@ public class BankAccountApp {
                 
             } else {
                 System.out.println("ERROR READING ACCOUNT TYPE");
+                
             }
         }
 
-
+        
+        // Iterating through List<Account> account (populated in previous iteration step) to call showInfo() on each new account (class savings or checking).
        for (Account acc : accounts) {
             System.out.println("-".repeat(30));
             acc.showInfo();
        }
-
-
-
         // UNIT TESTING
         // Checking chkAcc1 = new Checking("Tom Wilson", "1234567897", 1500);
         // Savings savAcc1 = new Savings("Rich Lowe", "213245789d59", 2500);
